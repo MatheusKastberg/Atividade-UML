@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reserva de Laboratórios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🏫 Sistema de Reserva de Laboratórios</h1>
+            <p class="subtitle">Maturidade em Desenvolvimento de Software</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- RF01: Consultar Laboratórios -->
+        <section class="card" id="secao-laboratorios">
+            <h2>📋 Laboratórios Disponíveis</h2>
+            <p class="descricao">Consulte a situação dos laboratórios antes de realizar sua reserva.</p>
+            <div class="tabela-wrapper">
+                <table id="tabela-laboratorios">
+                    <thead>
+                        <tr>
+                            <th>Laboratório</th>
+                            <th>Capacidade</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Preenchido via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <p class="aviso">
+                ⚠️ Laboratórios com capacidade inferior a 30 alunos <strong>não podem</strong> ser reservados para aulas regulares.
+            </p>
+        </section>
+
+        <!-- RF02 + RF03: Realizar e Validar Reserva -->
+        <section class="card" id="secao-reserva">
+            <h2>📝 Realizar Reserva</h2>
+            <p class="descricao">Preencha todos os campos para solicitar a reserva de um laboratório.</p>
+            <form id="form-reserva" novalidate>
+                <div class="form-grid">
+                    <!-- Dados do Professor -->
+                    <div class="form-group">
+                        <label for="nome-professor">Nome do Professor <span class="obrigatorio">*</span></label>
+                        <input type="text" id="nome-professor" placeholder="Ex: Maria Silva" required>
+                        <span class="erro-msg" id="erro-nome"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="matricula">Matrícula <span class="obrigatorio">*</span></label>
+                        <input type="text" id="matricula" placeholder="Ex: 2024001" required>
+                        <span class="erro-msg" id="erro-matricula"></span>
+                    </div>
+
+                    <!-- Dados da Reserva -->
+                    <div class="form-group">
+                        <label for="laboratorio">Laboratório <span class="obrigatorio">*</span></label>
+                        <select id="laboratorio" required>
+                            <option value="">Selecione um laboratório</option>
+                            <!-- Preenchido via JavaScript -->
+                        </select>
+                        <span class="erro-msg" id="erro-laboratorio"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data <span class="obrigatorio">*</span></label>
+                        <input type="date" id="data" required>
+                        <span class="erro-msg" id="erro-data"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="horario">Horário <span class="obrigatorio">*</span></label>
+                        <input type="time" id="horario" required>
+                        <span class="erro-msg" id="erro-horario"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="finalidade">Finalidade <span class="obrigatorio">*</span></label>
+                        <select id="finalidade" required>
+                            <option value="">Selecione a finalidade</option>
+                            <option value="Aula Regular">Aula Regular</option>
+                            <option value="Workshop">Workshop</option>
+                            <option value="Evento">Evento</option>
+                            <option value="Projeto">Projeto</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                        <span class="erro-msg" id="erro-finalidade"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-reservar">Confirmar Reserva</button>
+            </form>
+        </section>
+
+        <!-- RF05: Listar Reservas -->
+        <section class="card" id="secao-reservas">
+            <h2>📄 Reservas Realizadas</h2>
+            <p class="descricao">Acompanhe as reservas feitas durante esta sessão.</p>
+
+            <div id="sem-reservas" class="sem-reservas">
+                <p>Nenhuma reserva realizada até o momento.</p>
+            </div>
+
+            <div class="tabela-wrapper">
+                <table id="tabela-reservas" class="oculto">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Professor</th>
+                            <th>Matrícula</th>
+                            <th>Laboratório</th>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Finalidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Preenchido via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- RF04: Modal de Confirmação -->
+    <div id="modal-confirmacao" class="modal oculto">
+        <div class="modal-conteudo">
+            <span class="modal-icone">✅</span>
+            <h3>Reserva Confirmada!</h3>
+            <p id="modal-mensagem"></p>
+            <button id="btn-fechar-modal" class="btn-fechar">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Sistema de Reserva de Laboratórios &copy; 2026 — Atividade Prática</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

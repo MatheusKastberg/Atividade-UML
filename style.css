@@ -1,0 +1,407 @@
+/* =============================================
+   SISTEMA DE RESERVA DE LABORATÓRIOS - CSS
+   RNF01: Usabilidade | RNF02: Responsividade
+   ============================================= */
+
+/* === Reset e Base === */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #1a5276;
+    --cor-primaria-hover: #154360;
+    --cor-secundaria: #2980b9;
+    --cor-sucesso: #27ae60;
+    --cor-sucesso-bg: #eafaf1;
+    --cor-erro: #e74c3c;
+    --cor-erro-bg: #fdedec;
+    --cor-aviso: #f39c12;
+    --cor-aviso-bg: #fef9e7;
+    --cor-indisponivel: #95a5a6;
+    --cor-fundo: #f0f2f5;
+    --cor-branco: #ffffff;
+    --cor-texto: #2c3e50;
+    --cor-texto-leve: #7f8c8d;
+    --cor-borda: #dcdde1;
+    --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --sombra-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --raio: 10px;
+    --transicao: 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* === Header === */
+.header {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-branco);
+    padding: 28px 0;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.header .subtitle {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* === Cards / Seções === */
+main.container {
+    flex: 1;
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+.card {
+    background: var(--cor-branco);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 28px 30px;
+    margin-bottom: 28px;
+    transition: box-shadow var(--transicao);
+}
+
+.card:hover {
+    box-shadow: var(--sombra-hover);
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    color: var(--cor-primaria);
+    margin-bottom: 6px;
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 10px;
+}
+
+.descricao {
+    color: var(--cor-texto-leve);
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+}
+
+/* === Tabelas === */
+.tabela-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+thead {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+
+th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Status badges */
+.badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-disponivel {
+    background-color: var(--cor-sucesso-bg);
+    color: var(--cor-sucesso);
+    border: 1px solid var(--cor-sucesso);
+}
+
+.badge-indisponivel {
+    background-color: var(--cor-erro-bg);
+    color: var(--cor-erro);
+    border: 1px solid var(--cor-erro);
+}
+
+.badge-restrito {
+    background-color: var(--cor-aviso-bg);
+    color: var(--cor-aviso);
+    border: 1px solid var(--cor-aviso);
+}
+
+.linha-indisponivel {
+    opacity: 0.55;
+    background-color: #fafafa;
+}
+
+.aviso {
+    margin-top: 14px;
+    padding: 10px 16px;
+    background-color: var(--cor-aviso-bg);
+    border-left: 4px solid var(--cor-aviso);
+    border-radius: 4px;
+    font-size: 0.88rem;
+    color: #856404;
+}
+
+/* === Formulário === */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--cor-texto);
+}
+
+.obrigatorio {
+    color: var(--cor-erro);
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px 14px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+    transition: border-color var(--transicao), box-shadow var(--transicao);
+    background-color: var(--cor-branco);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15);
+}
+
+.form-group input.campo-erro,
+.form-group select.campo-erro {
+    border-color: var(--cor-erro);
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
+}
+
+.erro-msg {
+    color: var(--cor-erro);
+    font-size: 0.8rem;
+    min-height: 18px;
+    margin-top: 4px;
+}
+
+.btn-reservar {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--cor-sucesso), #2ecc71);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform var(--transicao), box-shadow var(--transicao), opacity var(--transicao);
+}
+
+.btn-reservar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(39, 174, 96, 0.35);
+}
+
+.btn-reservar:active {
+    transform: translateY(0);
+}
+
+/* === Sem Reservas === */
+.sem-reservas {
+    text-align: center;
+    padding: 30px;
+    color: var(--cor-texto-leve);
+    font-style: italic;
+}
+
+/* === Modal de Confirmação (RF04) === */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-conteudo {
+    background: var(--cor-branco);
+    padding: 36px 40px;
+    border-radius: var(--raio);
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-icone {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.modal-conteudo h3 {
+    font-size: 1.3rem;
+    color: var(--cor-sucesso);
+    margin-bottom: 10px;
+}
+
+.modal-conteudo p {
+    color: var(--cor-texto-leve);
+    font-size: 0.92rem;
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.btn-fechar {
+    padding: 10px 32px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transicao);
+}
+
+.btn-fechar:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* === Utilitários === */
+.oculto {
+    display: none !important;
+}
+
+/* === Animações === */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === Footer === */
+.footer {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    text-align: center;
+    padding: 16px 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* =============================================
+   RNF02: RESPONSIVIDADE — Media Queries
+   ============================================= */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.35rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .card {
+        padding: 20px 18px;
+        margin-bottom: 20px;
+    }
+
+    .card h2 {
+        font-size: 1.15rem;
+    }
+
+    th, td {
+        padding: 9px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 20px 0;
+    }
+
+    .header h1 {
+        font-size: 1.15rem;
+    }
+
+    .header .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .modal-conteudo {
+        padding: 24px 20px;
+    }
+}
